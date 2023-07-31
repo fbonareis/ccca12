@@ -45,23 +45,36 @@ test("Deve fazer o cálculo do preço de uma corrida durante o dia com preço m�
 
 test("Deve solicitar uma corrida", function () {
 	const ride = Ride.create("", new Coord(0, 0), new Coord(0, 0))
-	expect(ride.status).toBe("requested");
+	expect(ride.status.value).toBe("requested");
 });
 
 test("Deve aceitar uma corrida", function () {
 	const ride = Ride.create("", new Coord(0, 0), new Coord(0, 0))
 	ride.accept("", new Date('2021-03-01T10:10:00'))
-	expect(ride.status).toBe("accepted");
+	expect(ride.status.value).toBe("accepted");
 });
 
 test("Deve iniciar uma corrida", function () {
 	const ride = Ride.create("", new Coord(0, 0), new Coord(0, 0))
+	ride.accept("", new Date('2021-03-01T10:10:00'))
 	ride.start(new Date('2021-03-01T10:10:00'))
-	expect(ride.status).toBe("in_progress");
+	expect(ride.status.value).toBe("in_progress");
 });
 
 test("Deve finalizar uma corrida", function () {
 	const ride = Ride.create("", new Coord(0, 0), new Coord(0, 0))
+	ride.accept("", new Date('2021-03-01T10:10:00'))
+	ride.start(new Date('2021-03-01T10:10:00'))
 	ride.end(new Date('2021-03-01T10:20:00'))
-	expect(ride.status).toBe("completed");
+	expect(ride.status.value).toBe("completed");
+});
+
+test("Não pode finalizar uma corrida se ela não estiver sido inciada", function () {
+	const ride = Ride.create("", new Coord(0, 0), new Coord(0, 0))
+	expect(() => ride.end(new Date('2021-03-01T10:20:00'))).toThrow('Invalid status')
+});
+
+test("Não pode iniciar uma corrida se ela não tiver sido aceita", function () {
+	const ride = Ride.create("", new Coord(0, 0), new Coord(0, 0))
+	expect(() => ride.start(new Date('2021-03-01T10:20:00'))).toThrow('Invalid status')
 });

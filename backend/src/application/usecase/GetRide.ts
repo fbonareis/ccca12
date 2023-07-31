@@ -23,7 +23,7 @@ export default class GetRide {
     return {
       rideId: ride.rideId,
       driverId: ride.driverId,
-      status: ride.status,
+      status: ride.status.value,
       requestDate: ride.requestDate,
       acceptDate: ride.acceptDate,
       startDate: ride.startDate,

@@ -8,6 +8,8 @@ import UUIDGenerator from '../identity/UUIDGenerator'
 import DistanceCalculator from './../distance/DistanceCalculator'
 import Position from './Position'
 import Segment from './Segment'
+import RideStatus from './status/RideStatus'
+import RideStatusFactory from './status/RideStatusFactory'
 
 export default class Ride {
   positions: Position[]
@@ -17,8 +19,9 @@ export default class Ride {
   acceptDate?: Date
   startDate?: Date
   endDate?: Date
+  status: RideStatus
 
-  constructor(readonly rideId: string, readonly passengerId: string, readonly from: Coord, readonly to: Coord, public status: string, readonly requestDate: Date) {
+  constructor(readonly rideId: string, readonly passengerId: string, readonly from: Coord, readonly to: Coord, status: string, readonly requestDate: Date) {
     this.positions = []
     const overnightSundayFareCalculator =
       new OvernightSundayFareCalculatorHandler()
@@ -31,6 +34,7 @@ export default class Ride {
     this.fareCalculator = new NormalFareCalculatorHandler(
       overnightFareCalculator,
     )
+    this.status = RideStatusFactory.create(this, status)
   }
 
   addPosition(lat: number, long: number, date: Date) {
@@ -54,17 +58,17 @@ export default class Ride {
 
   accept(driverId: string, date: Date) {
     this.driverId = driverId
-    this.status = "accepted"
+    this.status.accept()
     this.acceptDate = date
   }
 
   start(date: Date) {
-    this.status = 'in_progress'
+    this.status.start()
     this.startDate = date
   }
 
   end(date: Date) {
-    this.status = 'completed'
+    this.status.end()
     this.endDate = date
   }
 

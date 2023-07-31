@@ -16,7 +16,7 @@ export default class RideRepositoryDatabase implements RideRepository {
         ride.from.long,
         ride.to.lat,
         ride.to.long,
-        ride.status,
+        ride.status.value,
         ride.requestDate
       ],
     )
@@ -44,7 +44,7 @@ export default class RideRepositoryDatabase implements RideRepository {
 
   async update(ride: Ride): Promise<void> {
     await this.connection.query("update ride set driver_id = $1, status = $2, accept_date = $3, start_date = $4, end_date = $5 where ride_id = $6",
-      [ride.driverId, ride.status, ride.acceptDate, ride.startDate, ride.endDate, ride.rideId]
+      [ride.driverId, ride.status.value, ride.acceptDate, ride.startDate, ride.endDate, ride.rideId]
     );
   }
 }
