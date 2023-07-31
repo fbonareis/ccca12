@@ -1,6 +1,5 @@
-import Segment from "../../ride/Segment";
-import FareCalculatorHandler from "./FareCalculatorHandler";
-
+import Segment from '../../ride/Segment'
+import FareCalculatorHandler from './FareCalculatorHandler'
 
 export default class OvernightSundayFareCalculatorHandler extends FareCalculatorHandler {
   FARE = 5

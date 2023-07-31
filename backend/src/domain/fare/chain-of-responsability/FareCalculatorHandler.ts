@@ -1,10 +1,10 @@
-import Segment from "../../ride/Segment";
+import Segment from '../../ride/Segment'
 
 // template method
 export default abstract class FareCalculatorHandler {
-  abstract FARE: number;
+  abstract FARE: number
 
-  constructor(readonly next?: FareCalculatorHandler) { }
+  constructor(readonly next?: FareCalculatorHandler) {}
 
   abstract handle(segment: Segment): number
 

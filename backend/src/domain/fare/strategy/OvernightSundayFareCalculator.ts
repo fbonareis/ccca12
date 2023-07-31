@@ -1,11 +1,10 @@
-import FareCalculator from "./FareCalculator";
-import Segment from "./../../ride/Segment";
+import FareCalculator from './FareCalculator'
+import Segment from './../../ride/Segment'
 
 export default class OvernightSundayFareCalculator implements FareCalculator {
-	FARE = 5;
+  FARE = 5
 
-	calculate(segment: Segment): number {
-		return segment.distance * this.FARE;
-	}
-
+  calculate(segment: Segment): number {
+    return segment.distance * this.FARE
+  }
 }

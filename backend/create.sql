@@ -18,3 +18,7 @@ CREATE TABLE IF NOT EXISTS driver (
 	document text,
 	car_plate text
 );
+
+CREATE TABLE ride {
+	
+}

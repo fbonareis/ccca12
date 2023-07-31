@@ -1,16 +1,17 @@
 export default abstract class InputOutput {
-	commands: any = {};
+  commands: any = {}
 
-	on (command: string, callback: Function) {
-		this.commands[command] = callback;
-	}
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  on(command: string, callback: Function) {
+    this.commands[command] = callback
+  }
 
-	async type (text: string) {
-		const [command] = text.split(" ");
-		if (!this.commands[command]) return;
-		const params = text.replace(command, "").trim();
-		await this.commands[command](params);
-	}
+  async type(text: string) {
+    const [command] = text.split(' ')
+    if (!this.commands[command]) return
+    const params = text.replace(command, '').trim()
+    await this.commands[command](params)
+  }
 
-	abstract write (text: string): void;
+  abstract write(text: string): void
 }

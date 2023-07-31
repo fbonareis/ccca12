@@ -1,8 +1,7 @@
-import crypto from "crypto";
+import crypto from 'crypto'
 
 export default class UUIDGenerator {
-
-	static create () {
-		return crypto.randomUUID();
-	}
+  static create() {
+    return crypto.randomUUID()
+  }
 }
