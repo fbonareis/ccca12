@@ -1,18 +1,18 @@
-import Ride from "../../domain/Ride";
+import Ride from "../../domain/ride/Ride";
 
 export default class CalculateRide {
 
-	constructor () {
+	constructor() {
 	}
 
-	async execute (input: Input): Promise<Output> {
+	async execute(input: Input): Promise<Output> {
 		const ride = new Ride();
 		for (const position of input.positions) {
 			ride.addPosition(position.lat, position.long, new Date(position.date));
 		}
 		const price = ride.calculate();
-		return { 
-			price 
+		return {
+			price
 		};
 	}
 }

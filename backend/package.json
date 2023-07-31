@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/main_api.ts",
-    "test": "jest --coverage"
+    "test": "jest --coverage --maxWorkers=50%"
   },
   "author": "",
   "license": "ISC",

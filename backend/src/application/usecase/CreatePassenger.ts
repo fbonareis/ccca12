@@ -1,12 +1,12 @@
 import PassengerRepository from "../repository/PassengerRepository";
-import Passenger from "../../domain/Passenger";
+import Passenger from "../../domain/passenger/Passenger";
 
 export default class CreatePassenger {
 
-	constructor (readonly passengerRepository: PassengerRepository) {
+	constructor(readonly passengerRepository: PassengerRepository) {
 	}
 
-	async execute (input: Input): Promise<Output> {
+	async execute(input: Input): Promise<Output> {
 		const passenger = Passenger.create(input.name, input.email, input.document);
 		await this.passengerRepository.save(passenger);
 		return {

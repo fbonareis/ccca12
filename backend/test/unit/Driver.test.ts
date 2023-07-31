@@ -1,5 +1,4 @@
-import Driver from "../../src/domain/Driver";
-import Passenger from "../../src/domain/Passenger";
+import Driver from "../../src/domain/driver/Driver";
 
 test("Deve criar um motorista", function () {
 	const driver = Driver.create("John Doe", "john.doe@gmail.com", "83432616074", "AAA9999");

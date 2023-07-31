@@ -2,7 +2,7 @@ import CreateDriver from "../../src/application/usecase/CreateDriver";
 import GetDriver from "../../src/application/usecase/GetDriver";
 import sinon from "sinon";
 import DriverRepositoryDatabase from "../../src/infra/repository/DriverRepositoryDatabase";
-import Driver from "../../src/domain/Driver";
+import Driver from "../../src/domain/driver/Driver";
 import DriverRepository from "../../src/application/repository/DriverRepository";
 import PgPromiseAdapter from "../../src/infra/database/PgPromiseAdapter";
 
@@ -24,9 +24,9 @@ test("Deve cadastrar o motorista", async function () {
 test("Deve obter o motorista", async function () {
 	// fake test pattern
 	const driverRepository: DriverRepository = {
-		async save (driver: any): Promise<void> {
+		async save(driver: any): Promise<void> {
 		},
-		async get (driverId: string): Promise<any> {
+		async get(driverId: string): Promise<any> {
 			return Driver.create("John Doe", "john.doe@gmail.com", "83432616074", "AAA9999")
 		}
 	};
