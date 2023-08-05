@@ -8,7 +8,7 @@ import PassengerRepositoryDatabase from './infra/repository/PassengerRepositoryD
 import PgPromiseAdapter from './infra/database/PgPromiseAdapter'
 import MainController from './infra/http/MainController'
 import ExpressAdapter from './infra/http/ExpressAdapter'
-import HapiAdapter from './infra/http/HapiAdapter'
+// import HapiAdapter from './infra/http/HapiAdapter'
 
 // main composition root
 const connection = new PgPromiseAdapter()

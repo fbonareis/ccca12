@@ -1,4 +1,3 @@
-import crypto from 'crypto'
 import Cpf from './../person/Cpf'
 import Email from './../person/Email'
 import UUIDGenerator from './../identity/UUIDGenerator'

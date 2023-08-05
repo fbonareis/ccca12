@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/main_api.ts",
-    "test": "jest --coverage --maxWorkers=50%"
+    "test": "jest --coverage --maxWorkers=50%",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "npm run lint -- --fix"
   },
   "author": "",
   "license": "ISC",
